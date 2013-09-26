@@ -1,11 +1,15 @@
-#########################################################
-# Author : José Gonçalves 				#
-# Version : 1.1						#
-#########################################################
+#=======================================================
+# Author : José Gonçalves
+# Desc : Another conky :) 
+# Version : 0.1	
+#=======================================================
+
+## Main Settings :
 background yes
 use_xft yes
-xftfont Sans:size=8
+xftfont Sans:size=6
 xftalpha 1
+# Refresh rate :
 update_interval 1.0
 total_run_times 0
 own_window yes
@@ -13,62 +17,69 @@ own_window_transparent yes
 own_window_argb_visual yes
 own_window_type normal
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-double_buffer yes
-minimum_size 250 800
-maximum_width 250
+double_buffer no
+minimum_size 300 800
+maximum_width 300
 text_buffer_size 4096
 draw_shades yes
 draw_outline no
 draw_borders no
 draw_graph_borders yes
-default_color white
-default_shade_color black
-default_outline_color white
 alignment top_right
 gap_x 10
 gap_y 10
-no_buffers yes
+no_buffers no
 uppercase no
 cpu_avg_samples 2
 override_utf8_locale yes
-#white
-color1                white
-#white
-color2                white
-#orange
-color3                b60000
-#orange - yellow
-color4                ff0000
- 
-# Lua Load  #
-#lua_load ~/.conky/ring.lua
-#lua_draw_hook_pre clock_rings
- 
+
+## Font settings ======================
+# Font size :
+
+# Conky Colors :
+color1	FFFFFF
+color2	FFFFFF
+color3	b60000
+color4	ff0000
+default_shade_color black
+default_outline_color white
+default_color white
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+
 TEXT
+#[HEADER] =========================================================================
 ${color3}${font Sans:size=30}${alignc}${time %H}${time :%M}${time :%S}
 ${font Sans:size=10}${color3}Kernel: ${color2}$kernel
 ${color3}Uptime:${color2} $uptime
 ${color3}Processus: ${color2} $processes${color3}${alignr}En cours: ${color2} $running_processes
- 
+
+#[CPU] ============================================================================ 
 ${color3}CPU: ${hr}${color2}
  ${color3}Frequence :$alignr ${freq_g} GHz
- ${color3}Core 0:${color2} ${cpu cpu0}%${goto 80}${color4}${cpubar cpu0 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp1_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp1_input` / 1000}${color2}
- ${color3}Core 1:${color2} ${cpu cpu1}%${goto 80}${color4}${cpubar cpu1 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp2_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp2_input` / 1000}${color2}
- ${color3}Core 2:${color2} ${cpu cpu2}%${goto 80}${color4}${cpubar cpu2 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp3_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp3_input` / 1000}${color2}
- ${color3}Core 3:${color2} ${cpu cpu3}%${goto 80}${color4}${cpubar cpu3 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp4_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp4_input` / 1000}${color2}
- ${color3}Core 4:${color2} ${cpu cpu4}%${goto 80}${color4}${cpubar cpu4 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp5_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp5_input` / 1000}${color2}
+ ${color3}Core 0:${color2} ${cpu cpu0}%${goto 86}${color4}${cpubar cpu0 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp1_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp1_input` / 1000}${color2}
+ ${color3}Core 1:${color2} ${cpu cpu1}%${goto 86}${color4}${cpubar cpu1 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp2_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp2_input` / 1000}${color2}
+ ${color3}Core 2:${color2} ${cpu cpu2}%${goto 86}${color4}${cpubar cpu2 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp3_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp3_input` / 1000}${color2}
+ ${color3}Core 3:${color2} ${cpu cpu3}%${goto 86}${color4}${cpubar cpu3 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp4_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp4_input` / 1000}${color2}
+ ${color3}Core 4:${color2} ${cpu cpu4}%${goto 86}${color4}${cpubar cpu4 6,60}${color2}${goto 150}${exec expr `cat /sys/devices/platform/coretemp.0/temp5_input` / 1000}°C${goto 185}${color4}${execbar expr `cat /sys/devices/platform/coretemp.0/temp5_input` / 1000}${color2}
+#[CPU Graph] =======================
 ${cpugraph cpu0 25,120 ff0000 8b4b0b}$alignr${cpugraph cpu1 25,120 ff0000 8b4b0b}
-${voffset -28}${goto 50}Core 0${goto 180}Core 1
+${voffset -28}${goto 50}Core 0${goto 220}Core 1
+#[MEMORY] =========================================================================
 ${voffset 20}${color3}MEMOIRE: ${hr}${color2}
+
  ${color3}RAM:${color2} $mem/$memmax ${goto 150}$memperc% ${goto 185}${color4}${membar}${color2}
  ${color3}SWAP:${color2} ${swap} / ${swapmax} ${goto 150} ${swapperc}%${goto 185}${color4}${swapbar}
- 
+
+#[SPACEDISK] ====================================================================== 
 ${color3}ESPACE DISQUE:${hr}${color2}
-${color3}${alignc}SDA: ${color2}##${execi 10 hddtemp -n /dev/sda} °C
- 
+
  ${color3}/ ${color2}${goto 60}${fs_used /} / ${fs_size /} ${goto 150}${fs_used_perc /}% ${goto 185}${color4}${fs_bar /}${color2}
  ${color3}home ${color2}${goto 60}${fs_used /home} / ${fs_size /home} ${goto 150}${fs_used_perc /home}% ${goto 185}${color4}${fs_bar /home}${color2}
- 
+
+#[CHARGE] ========================================================================= 
 ${color3}CHARGE: ${hr}${color2}
 ${color3}Processus$alignr${color2}${color3}(%) PID   CPU   MEM${color2}
  ${top name 1} $alignr${top pid 1} ${top cpu 1} ${top mem 1}
@@ -80,28 +91,33 @@ ${color3}Memoire$alignr${color2}${color3}(%) PID   CPU   MEM${color2}
  ${color #CACACA}${top_mem name 2} $alignr${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
  ${color #A2A2A2}${top_mem name 3} $alignr${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
  ${color #787878}${top_mem name 4} $alignr${top_mem pid 4} ${top_mem cpu 4} ${top_mem mem 4}
- 
+
+#[NETWORK] =======================================================================
 ${color3}RESEAU: ${hr}${color2}
-${color3}${alignc}eth0 : ${addr eth0}${color2}
- 
- ${color3}Down:${color2} ${totaldown eth0}${goto 120}${downspeedf eth0}k/s
- ${color3}Up:${color2} ${totalup eth0}${goto 120}${upspeedf eth0}k/s
+${color3}eth0 : ${color2}${addr eth0}${color2}
+${goto 20}${color3}Down:${color2} ${totaldown eth0}${goto 200}${downspeedf eth0}k/s
+${goto 20}${color3}Up:${color2} ${totalup eth0}${goto 200}${upspeedf eth0}k/s
+${color3}wlan0 : ${color2}${addr wlan0}${color2}
+${goto 20}${color3}Down:${color2} ${totaldown wlan0}${goto 200}${downspeedf wlan0}k/s
+${goto 20}${color3}Up:${color2} ${totalup wlan0}${goto 200}${upspeedf wlan0}k/s
+#[NetGraph] ======================================================================
 ${downspeedgraph eth0 25,120 ff0000 8b4b0b}$alignr${upspeedgraph eth0 25,120 ff0000 8b4b0b}
 ${voffset -28}${goto 50}DOWN${goto 190}UP
- 
-${font sans-serif:size=8,weight:bold}${color}IP${alignr}DPORT
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  0}${alignr 1}${tcp_portmon 1 65535 rport  0}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  1}${alignr 1}${tcp_portmon 1 65535 rport  1}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  2}${alignr 1}${tcp_portmon 1 65535 rport  2}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  3}${alignr 1}${tcp_portmon 1 65535 rport  3}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  4}${alignr 1}${tcp_portmon 1 65535 rport  4}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  5}${alignr 1}${tcp_portmon 1 65535 rport  5}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  6}${alignr 1}${tcp_portmon 1 65535 rport  6}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  7}${alignr 1}${tcp_portmon 1 65535 rport  7}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  8}${alignr 1}${tcp_portmon 1 65535 rport  8}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip  9}${alignr 1}${tcp_portmon 1 65535 rport  9}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 10}${alignr 1}${tcp_portmon 1 65535 rport 10}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 11}${alignr 1}${tcp_portmon 1 65535 rport 11}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 12}${alignr 1}${tcp_portmon 1 65535 rport 12}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
-${font sans-serif:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
+
+#[Port Monitoring] ===============================================================
+${font Sans:size=7,weight:bold}${color}IP${alignr}DPORT
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  0}${alignr 1}${tcp_portmon 1 65535 rport  0}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  1}${alignr 1}${tcp_portmon 1 65535 rport  1}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  2}${alignr 1}${tcp_portmon 1 65535 rport  2}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  3}${alignr 1}${tcp_portmon 1 65535 rport  3}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  4}${alignr 1}${tcp_portmon 1 65535 rport  4}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  5}${alignr 1}${tcp_portmon 1 65535 rport  5}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  6}${alignr 1}${tcp_portmon 1 65535 rport  6}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  7}${alignr 1}${tcp_portmon 1 65535 rport  7}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  8}${alignr 1}${tcp_portmon 1 65535 rport  8}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip  9}${alignr 1}${tcp_portmon 1 65535 rport  9}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip 10}${alignr 1}${tcp_portmon 1 65535 rport 10}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip 11}${alignr 1}${tcp_portmon 1 65535 rport 11}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip 12}${alignr 1}${tcp_portmon 1 65535 rport 12}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
+${font Sans:size=7,weight:normal}${color1}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
