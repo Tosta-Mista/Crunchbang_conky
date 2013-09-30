@@ -49,7 +49,7 @@ draw_graph_borders yes
 TEXT
 #[HEADER] =========================================================================
 ${color3}${font Sans:size=30}${alignc}${time %H}${time :%M}${time :%S}
-${font Sans:size=10}${color3}Kernel: ${color2}$kernel
+${font Sans:size=7}${color3}Kernel: ${color2}$kernel
 ${color3}Uptime:${color2} $uptime
 ${color3}Processus: ${color2} $processes${color3}${alignr}En cours: ${color2} $running_processes
 
