@@ -1,7 +1,7 @@
 #=======================================================
 # Author : José Gonçalves
 # Desc : Another conky :) 
-# Version : 0.1	
+# Version : 0.1        
 #=======================================================
 
 ## Main Settings :
@@ -34,10 +34,10 @@ override_utf8_locale yes
 # Font size :
 
 # Conky Colors :
-color1	FFFFFF
-color2	FFFFFF
-color3	b60000
-color4	ff0000
+color1        FFFFFF
+color2        FFFFFF
+color3        b60000
+color4        ff0000
 default_shade_color black
 default_outline_color white
 default_color white
@@ -91,19 +91,24 @@ ${color3}Memoire$alignr${color2}${color3}(%) PID   CPU   MEM${color2}
 
 #[NETWORK] =======================================================================
 ${color3}RESEAU: ${hr}${color2}
+
 ${color3}eth0 : ${color2}${addr eth0}${color2}
 ${goto 20}${color3}Down:${goto 70}${color2} ${totaldown eth0}${goto 200}${downspeedf eth0}k/s
 ${goto 20}${color3}Up:${goto 70}${color2} ${totalup eth0}${goto 200}${upspeedf eth0}k/s
+
 #[eth0Graph] ======================================================================
 ${downspeedgraph eth0 30,145 ff0000 8b4b0b}$alignr${upspeedgraph eth0 30,145 ff0000 8b4b0b}
 ${voffset -28}${goto 55}DOWN${goto 230}UP
 
+
 ${color3}wlan0 : ${color2}${addr wlan0}${color2}
 ${goto 20}${color3}Down:${goto 70}${color2} ${totaldown wlan0}${goto 200}${downspeedf wlan0}k/s
 ${goto 20}${color3}Up:${goto 70}${color2} ${totalup wlan0}${goto 200}${upspeedf wlan0}k/s
+
 #[wlanGraph] ======================================================================
 ${downspeedgraph wlan0 30,145 ff0000 8b4b0b}$alignr${upspeedgraph wlan0 30,145 ff0000 8b4b0b}
 ${voffset -28}${goto 55}DOWN${goto 230}UP
+
 
 #[Port Monitoring] ===============================================================
 ${font Sans:size=8,weight:bold}${color}IP${alignr}DPORT
@@ -122,4 +127,3 @@ ${font Sans:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 11}${alignr 
 ${font Sans:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 12}${alignr 1}${tcp_portmon 1 65535 rport 12}
 ${font Sans:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 13}${alignr 1}${tcp_portmon 1 65535 rport 13}
 ${font Sans:size=8,weight:normal}${color1}${tcp_portmon 1 65535 rip 14}${alignr 1}${tcp_portmon 1 65535 rport 14}
-
