@@ -1,5 +1,5 @@
 conky.config = {
--- Conky settings --
+	-- Conky settings --
     update_interval = 1,							
     background = true,								
     cpu_avg_samples = 2,							
@@ -11,7 +11,7 @@ conky.config = {
     imlib_cache_size = 10,
     format_human_readable = true,					
 
--- Window specifications --
+	-- Window specifications --
     own_window = true,  							
     own_window_type = 'normal',   					
     own_window_transparent = false,  				
@@ -19,29 +19,29 @@ conky.config = {
     own_window_argb_value = 30,      				
     own_window_hints = 'undecorated,sticky,below,skip_taskbar,skip_pager', 	
     own_window_title = 'graph',
---    own_window_colour = '#484B52',
+	--    own_window_colour = '#484B52',
     minimum_width = 410,        					
     minimum_height = 1080, 							
     alignment = 'top_right', 						
     gap_x = 0,  								    
     gap_y = 20, 								    
 
--- Graphics settings --
+	-- Graphics settings --
     draw_shades = false, 						
     draw_outline = false,							
     draw_borders = false,							
     draw_graph_borders = false, 					
     border_width = 0, 								
 
--- Text settings --
+	-- Text settings --
     use_xft = true, 								
     font = 'Freesans:size=9',
 
--- Color settings --          				
-    color0 = 'd1d1d1',								
-    color1 = 'd59704',
-    color2 = '8a8a8a',
-    color3 = '719e6b',
+	-- Color settings --          				
+	color0 = 'd1d1d1',								
+	color1 = 'd59704',
+	color2 = '8a8a8a',
+	color3 = '719e6b',
 
 	lua_load = '~/.config/conky/Graph_conky/conky_graph.lua',
 	lua_draw_hook_post = 'main_bars',
@@ -49,6 +49,7 @@ conky.config = {
 };
 
 conky.text = [[
+
 ${font Freesans:size=8}${color3}SYSTEM:${hr}${color0}${font Freesans:size=8}
 
 ${goto 20}${exec cat /etc/issue.net}${image ~/.config/conky/Graph_conky/img/debian-logo.png -p 320,15}
@@ -59,9 +60,9 @@ ${color3}${hr}${font}
 
 ${voffset 5}${goto 80}LOAD${goto 150}TEMP${color0}${voffset 5}
 ${goto 20}CPU0:${goto 80}${cpu cpu0}%${goto 150}${execi 30 sensors |grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==1'} °C   
-${goto 20}CPU1:${goto 80}${cpu cpu1}%${goto 150}${execi 30 sensors |grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==2'} °C   
-${goto 20}CPU2:${goto 80}${cpu cpu2}%${goto 150}${execi 30 sensors |grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==3'} °C   
-${goto 20}CPU3:${goto 80}${cpu cpu3}%${goto 150}${execi 30 sensors |grep 'Core 0'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==4'} °C   
+${goto 20}CPU1:${goto 80}${cpu cpu1}%${goto 150}${execi 30 sensors |grep 'Core 1'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==1'} °C   
+${goto 20}CPU2:${goto 80}${cpu cpu2}%${goto 150}${execi 30 sensors |grep 'Core 2'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==1'} °C   
+${goto 20}CPU3:${goto 80}${cpu cpu3}%${goto 150}${execi 30 sensors |grep 'Core 3'| awk -F'+' '{print $2}' | awk -F'.' '{print $1}' | awk 'NR==1'} °C   
 ${voffset 5}${goto 80}${color3}PERCENT${goto 150}TOTAL${color0}${voffset 5}
   RAM:${goto 80}$memperc% ${goto 150}$memmax
 ${voffset 5}${font Freesans:size=8}${color3}TEMPERATURES:${hr}
@@ -69,8 +70,8 @@ ${voffset 5}${font}${color0}${goto 20}GPU1:  ${execi 5 nvidia-settings -t -q [gp
 
 ${font Freesans:size=9}${color3}DISCS:${hr}${font}
 ${voffset 5}${goto 100}FREE:${goto 170}TOTAL:${color0}${voffset 5}
-${goto 20}Home${goto 100}${fs_free /home}${goto 170}${fs_size /home}
-${goto 20}Root${goto 100}${fs_free /}${goto 170}${fs_size /}
+${goto 20}Home${goto 100}${fs_free /}${goto 170}${fs_size /}
+${goto 20}Root${goto 100}${fs_free /data}${goto 170}${fs_size /data}
 
 
 ${font Freesans:size=9}${color3}CPU PROCESSES:      MEM PROCESSES:${color0}${font}
@@ -79,10 +80,10 @@ ${goto 20}${top name 2}${goto 140}${top cpu 2}%${goto 240}${top_mem name 2}${got
 ${goto 20}${top name 3}${goto 140}${top cpu 3}%${goto 240}${top_mem name 3}${goto 340}${top mem 3}%
 ${goto 20}${top name 4}${goto 140}${top cpu 4}%${goto 240}${top_mem name 4}${goto 340}${top mem 4}%
 ${goto 20}${top name 5}${goto 140}${top cpu 5}%${goto 240}${top_mem name 5}${goto 340}${top mem 5}%
-${goto 20}${top name 5}${goto 140}${top cpu 5}%${goto 240}${top_mem name 5}${goto 340}${top mem 6}%
-${goto 20}${top name 5}${goto 140}${top cpu 5}%${goto 240}${top_mem name 5}${goto 340}${top mem 7}%
-${goto 20}${top name 5}${goto 140}${top cpu 5}%${goto 240}${top_mem name 5}${goto 340}${top mem 8}%
-${goto 20}${top name 5}${goto 140}${top cpu 5}%${goto 240}${top_mem name 5}${goto 340}${top mem 9}%
+${goto 20}${top name 5}${goto 140}${top cpu 6}%${goto 240}${top_mem name 6}${goto 340}${top mem 6}%
+${goto 20}${top name 5}${goto 140}${top cpu 7}%${goto 240}${top_mem name 7}${goto 340}${top mem 7}%
+${goto 20}${top name 5}${goto 140}${top cpu 8}%${goto 240}${top_mem name 8}${goto 340}${top mem 8}%
+${goto 20}${top name 5}${goto 140}${top cpu 9}%${goto 240}${top_mem name 9}${goto 340}${top mem 9}%
 
 
 ${voffset 5}${font Freesans:size=8}${color3}NETWORK:${hr}${font}${color0}
